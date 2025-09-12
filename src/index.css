@@ -1,3 +1,11 @@
+html, body, #root {
+  margin: 0;            /* 브라우저 기본 여백 제거 */
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;   /* 100vw 스크롤바 폭 문제로 생기는 좌측 틈 제거 */
+}
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
