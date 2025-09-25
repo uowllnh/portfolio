@@ -9,7 +9,7 @@ export default function Thank() {
         animationData={Thk}
         loop
         autoplay
-        style={{ width: "100vw", height: "100vh" }}     // 컨테이너 크기
+        style={{ width: "100%", height: "100%" }}     // 컨테이너 크기
         rendererSettings={{
           // SVG의 잘림/확대 방식 → 'object-fit: cover' 같은 효과
           preserveAspectRatio: "xMidYMid slice",

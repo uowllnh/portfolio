@@ -1,24 +1,42 @@
+import { useRef, useState } from "react";
 import Lottie from "lottie-react";
-import Information from "../assets/Info.json";
+import Info from "../assets/info.json";
 
-export default function Info() {
+export default function IndexOnce() {
+  const lottieRef = useRef<any>(null);
+  const [locked, setLocked] = useState(false); // 끝에서 ‘잠금’ 상태
+
   return (
-   <section className="relative w-screen h-screen overflow-hidden bg-black">
-      {/* Lottie를 화면에 꽉 채우기 */}
+    <section className="relative w-full h-[100dvh] overflow-hidden bg-black">
       <Lottie
-        animationData={Information}
-        loop
-        autoplay
-        style={{ width: "100vw", height: "100vh" }}     // 컨테이너 크기
+      
+        lottieRef={lottieRef}
+        animationData={Info}
+        autoplay={false}         // 자동 재생
+        loop={false}
+        style={{ width: "80vw", height: "80vh" }}
+        rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}            // 반복 금지 = 한 번만
+
+        // 재생이 끝나면 ‘마지막 프레임’으로 고정 + 잠금
+        onComplete={() => {
+          const total = lottieRef.current?.getDuration?.(true);
+          if (typeof total === "number") {
+            lottieRef.current?.goToAndStop(total - 1, true);
+            setLocked(true);
+          }
+        }}
+
+        // 혹시 외부(스크롤 등)에서 ref로 다시 play()를 호출하더라도 무시하고 싶을 때:
+        // onEnterFrame={() => { if (locked) lottieRef.current?.pause(); }}
+
+        style={{ width: "100%", height: "100%" }}
         rendererSettings={{
-          // SVG의 잘림/확대 방식 → 'object-fit: cover' 같은 효과
-          preserveAspectRatio: "xMidYMid slice",
-          progressiveLoad: true,
+          preserveAspectRatio: "xMidYMid slice", // 화면 꽉 채우기
+          progressiveLoad: false,                 // ⬅️ 첫 구간 정적처럼 보일 때 false가 더 안정적
           hideOnTransparent: true,
         }}
         className="absolute inset-0"
       />
-
     </section>
   );
 }
