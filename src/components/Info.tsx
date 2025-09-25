@@ -14,8 +14,6 @@ export default function IndexOnce() {
         animationData={Info}
         autoplay={false}         // 자동 재생
         loop={false}
-        style={{ width: "80vw", height: "80vh" }}
-        rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}            // 반복 금지 = 한 번만
 
         // 재생이 끝나면 ‘마지막 프레임’으로 고정 + 잠금
         onComplete={() => {

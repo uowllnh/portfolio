@@ -1,114 +1,116 @@
 // src/components/LottieSection.tsx
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Lottie from "lottie-react";
 import { useEnterLeave } from "../hooks/useEnterLeave";
 
 type Props = {
   animationData: any;
   segment?: [number, number];
-  allowUpscale?: boolean; // true면 큰 화면에서 키우기, false면 원본보다 크게 안 키움(디폴트)
 };
 
-export default function LottieSection({
-  animationData,
-  segment,
-  allowUpscale = false,
-}: Props) {
+export default function LottieSection({ animationData, segment }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const lottieRef = useRef<any>(null);
-
-  const baseW = Number(animationData?.w) || 1710;
-  const baseH = Number(animationData?.h) || 1112;
+  const lottieRef  = useRef<any>(null);
 
   const [total, setTotal] = useState(0);
-  const [scale, setScale] = useState(1);
 
-  // ⬇️ 창 크기에 맞춰 "전체가 보이도록" 스케일(비율 유지, 중앙)
-  useLayoutEffect(() => {
-    const resize = () => {
-      const W = window.innerWidth;
-      const H = window.innerHeight;
-      const s = Math.min(W / baseW, H / baseH);
-      setScale(allowUpscale ? s : Math.min(1, s)); // 기본: 업스케일 금지(선명도 유지)
-    };
-    resize();
-    window.addEventListener("resize", resize);
-    window.addEventListener("orientationchange", resize);
-    return () => {
-      window.removeEventListener("resize", resize);
-      window.removeEventListener("orientationchange", resize);
-    };
-  }, [baseW, baseH, allowUpscale]);
+  // 중복 실행/중복 재생 방지 플래그
+  const readyRef   = useRef(false);
+  const startedRef = useRef(false);
 
+  // 현재 섹션이 이미 화면 안에 있는지 간단 판정(초기 로드 대비용)
+  const isSectionVisible = () => {
+    const el = sectionRef.current;
+    if (!el) return false;
+    const r  = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const vw = window.innerWidth  || document.documentElement.clientWidth;
+    return r.bottom > 0 && r.right > 0 && r.top < vh && r.left < vw;
+  };
+
+  const safeStartPlay = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    if (segment) {
+      const [s, e] = segment;
+      lottieRef.current?.goToAndStop(s, true);
+      // 다음 틱에 재생 → 첫 프레임 누락/깜빡임 방지
+      requestAnimationFrame(() => lottieRef.current?.playSegments([s, e], true));
+    } else {
+      lottieRef.current?.goToAndStop(0, true);
+      requestAnimationFrame(() => lottieRef.current?.play());
+    }
+  };
+
+  // 데이터/DOM/이미지 로드 뒤 최초 1회 초기화 + 보이면 즉시 재생
   const onReady = () => {
+    if (readyRef.current) return;
+    readyRef.current = true;
+
     const frames = lottieRef.current?.getDuration?.(true) ?? 0;
     setTotal(typeof frames === "number" ? frames : 0);
-    // 재생 전에도 첫 화면이 보이도록
+
+    // 초기 정지 프레임(깜빡임 방지)
     segment
       ? lottieRef.current?.goToAndStop(segment[0], true)
       : lottieRef.current?.goToAndStop(0, true);
+
+    // 🔑 중요: 이미 화면에 보이는 상태라면 옵저버 콜백 기다리지 말고 즉시 1회 재생
+    if (isSectionVisible()) safeStartPlay();
   };
 
-  // 진입 시 1회 재생
+  // 진입 시 1회 재생(이미 재생했으면 무시)
   const handleEnter = useCallback(() => {
-    const api = lottieRef.current;
-    if (!api || !total) return;
-    api.stop();
-    if (segment) {
-      const [s, e] = segment;
-      api.goToAndStop(s, true);
-      api.playSegments([s, e], true);
-    } else {
-      api.goToAndStop(0, true);
-      api.play();
-    }
-  }, [segment, total]);
+    if (!lottieRef.current || !total) return;
+    if (startedRef.current) return;
+    // 초기화 후 재생
+    lottieRef.current.stop();
+    safeStartPlay();
+  }, [total, segment]);
 
-  // 이탈 시 현재 프레임 그대로 정지(마지막 프레임 점프 X)
+  // 이탈 시 현재 프레임 그대로 정지
   const handleLeave = useCallback(() => {
     lottieRef.current?.pause();
-  }, []);
+    startedRef.current = false;
 
-  // 섹션 경계에서만 진입/이탈 트리거
+    if (segment) {
+    const [s] = segment;
+    lottieRef.current?.goToAndStop(s, true);
+  } else {
+    lottieRef.current?.goToAndStop(0, true);
+  }
+}, [segment]);
+
+  // 진입/이탈 트리거 민감도: 초기 진입 잘 잡히도록 threshold 낮춤
   const refFromHook = useEnterLeave<HTMLDivElement>(handleEnter, handleLeave, {
-    threshold: 0.7,
-    rootMargin: "0px 0px -10% 0px",
+    threshold: 0.3,
+    rootMargin: "0px 0px -5% 0px",
   });
 
-  const setSectionRef = (el: HTMLDivElement | null) => {
+  const setSectionRef = useCallback((el: HTMLDivElement | null) => {
     sectionRef.current = el;
     (refFromHook as any).current = el;
-  };
+  }, [refFromHook]);
 
   return (
     <section ref={setSectionRef} className="section relative overflow-hidden">
-      {/* 중앙 정렬 컨테이너 */}
-      <div 
-      className="absolute inset-0 grid place-items-center"
-          style={{
-            width: baseW,
-            height: baseH,
-            transform: `translate(-50%, -50%) scale(${scale})`,
-            transformOrigin: "center center",
-          }}
-        >
-          <Lottie
-            lottieRef={lottieRef}
-            animationData={animationData}
-            autoplay={false}
-            loop={false}
-            onDataReady={onReady}
-            onDOMLoaded={onReady}
-            className="absolute inset-0 w-full h-full"
-            rendererSettings={{
-              // 전체가 보여야 하므로 'meet' 고정(잘림 없음)
-              preserveAspectRatio: "xMidYMid meet",
-              progressiveLoad: false,
-              hideOnTransparent: true,
-            }}
-          />
-        
-      </div>
+      <Lottie
+        lottieRef={lottieRef}
+        animationData={animationData}
+        autoplay={false}                 // 자동재생은 우리가 통제
+        loop={false}                     // 1회만
+        onDataReady={onReady}            // 데이터 준비
+        onDOMLoaded={onReady}            // DOM 준비
+        // (지원되면) 이미지까지 로드된 후에도 onReady 시도 → 초기 프레임 안정화
+        // @ts-ignore - 일부 버전에서만 존재
+        onLoadedImages={onReady}
+        className="absolute inset-0 w-full h-full" // ✅ h-full 사용
+        rendererSettings={{
+          preserveAspectRatio: "xMidYMid meet",    // ✅ 전체 보이기(잘림 방지)
+          progressiveLoad: false,
+          hideOnTransparent: true,
+        }}
+      />
     </section>
   );
 }

@@ -6,7 +6,7 @@ type Opt = { threshold?: number; rootMargin?: string; };
 export function useEnterLeave<T extends Element>(
   onEnter: () => void,
   onLeave: () => void,
-  { threshold = 0.6, rootMargin }: Opt = {}
+  { threshold = 0.3, rootMargin }: Opt = {}
 ) {
   const ref = useRef<T | null>(null);
   const wasInRef = useRef(false);
