@@ -1,32 +1,22 @@
+// src/hooks/useInView.ts
 import { useEffect, useRef, useState } from "react";
 
-type Options = {
-  threshold?: number;     // 0~1: 섹션이 화면에 이만큼 들어오면 inView=true
-  rootMargin?: string;    // 필요하면 시야를 늘리거나 줄이기
-};
-
-export default function useInView<T extends Element>({
-  threshold = 0.35,
-  rootMargin,
-}: Options = {}) {
-  const targetRef = useRef<T | null>(null);
+export default function useInView<T extends HTMLElement>(
+  options?: IntersectionObserverInit
+) {
+  const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    const el = targetRef.current;
+    const el = ref.current;
     if (!el) return;
-
     const io = new IntersectionObserver(
-      (entries) => {
-        const e = entries[0];
-        setInView(e.isIntersecting && e.intersectionRatio >= threshold);
-      },
-      { threshold, rootMargin }
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.35, ...options } // 뷰의 35% 보이면 in
     );
-
     io.observe(el);
     return () => io.disconnect();
-  }, [threshold, rootMargin]);
+  }, [options]);
 
-  return { targetRef, inView };
+  return { ref, inView };
 }
