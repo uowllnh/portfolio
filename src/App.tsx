@@ -2,7 +2,6 @@
 import { useState } from "react";
 import "./App.css";
 import Lottie from "./components/LottieSection";
-import proj_btn from "./components/Project_btn";
 import useInView from "./hooks/useInView";
 import IndexAnim from "./assets/Index.json";
 import InfoAnim from "./assets/info.json";
@@ -11,8 +10,8 @@ import ThanksAnim from "./assets/Thanks.json";
 import velIcon from "./assets/logos/vel.svg";
 import gitIcon from "./assets/logos/git.svg";
 import arrow from "./assets/logos/arrow.svg";
-import projects_btn_bg from "./assets/projects_btn.svg";
 import FloatingActions from "./components/Floating";
+import Project_btn from "./components/Project_btn";
 
 export default function App() {
 
@@ -103,25 +102,9 @@ export default function App() {
 
       <section className="section_G" id="frame3">
 
-        <div className="btn_fix">
           <Lottie animationData={ProjectsAnim} />
-
-                        <div className="project-btn">
-                  {selected === "personal" && (
-                    <proj_btn projectName={ds}/>
-
-                )}
-                  {selected === "team" && (
-                    <div>
-                      <h2 className="text-xl font-semibold mb-2">팀 프로젝트</h2>
-                      <ul className="list-disc pl-6 space-y-1">
-                        <li>스마트폰 요금제 추천 앱 (졸업작품)</li>
-                        <li>사내 장비 제어 프로그램</li>
-                      </ul>
-                    </div>
-               )}
-                
-                </div>
+          <section className="absolute inset-0 w-screen h-screen z-30 ">
+            <div className="relative flex translate-y-1/3">
                 <div className="txt_button_container">
                     <button className={`text-btn ${selected === "personal"
                         ? "is-active" : "is-inactive"}`} onClick={() => setSelected("personal")}>
@@ -130,11 +113,11 @@ export default function App() {
                         ? "is-active" : "is-inactive"}`} onClick={() => setSelected("team")}>
                           Team </button>
                 </div>
-
+                  
+                  <Project_btn selected={selected}  />
+                </div> 
+                </section>
                 
-        </div>
-                
-
 
         <div className="arrow"
              onClick={() => scrollToNextSection("frame3")} >
