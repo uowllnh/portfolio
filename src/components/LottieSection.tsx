@@ -112,7 +112,7 @@ export default function LottieSection({ animationData, segment, children,overlay
                    inset: 0;
                    w-full 
                    h-full 
-                   z-0
+                   z-5
                    top-50% 
                    left-50%
                    -translate-x-50%
