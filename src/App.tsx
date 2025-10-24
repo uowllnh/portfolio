@@ -5,7 +5,7 @@ import Lottie from "./components/LottieSection";
 import useInView from "./hooks/useInView";
 import IndexAnim from "./assets/Index.json";
 import InfoAnim from "./assets/info.json";
-import ProjectsAnim from "./assets/Projects (1).json";
+import ProjectsAnim from "./assets/Projects(bgX).json";
 import ThanksAnim from "./assets/Thanks.json";
 import velIcon from "./assets/logos/vel.svg";
 import gitIcon from "./assets/logos/git.svg";
@@ -103,8 +103,8 @@ export default function App() {
       <section className="section_G" id="frame3">
 
           <Lottie animationData={ProjectsAnim} />
-          <section className="absolute inset-0 w-screen h-screen z-30 ">
-            <div className="relative flex translate-y-1/3">
+          <section className="absolute inset-0 w-screen h-screen z-30">
+            <div className="relative flex">
                 <div className="txt_button_container">
                     <button className={`text-btn ${selected === "personal"
                         ? "is-active" : "is-inactive"}`} onClick={() => setSelected("personal")}>

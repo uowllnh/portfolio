@@ -26,14 +26,14 @@ export default function Projects({ selected }: { selected: Tab }) {
 
 return (
   <section 
-  className="relative flex h-[550px] w-[760px] left-[40%] ">
+  className="relative flex h-[800px] w-[760px] left-[25%]">
     {/* 래퍼만 위치 지정 */}
     <div className="scroll-container px-14">
     
   
     {list.map(p => (
       <section>
-      <div className="project-btn top-[20%]">
+      <div className="project-btn top-[40%]">
       <div className="project-btn-txt"> 
       <h1 className="text-3xl font-semibold">{p.title}</h1> 
       <h2 className="text-2xl">{p.desc}</h2> </div>

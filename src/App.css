@@ -136,18 +136,13 @@ html, body, #root {
 
 .txt_button_container {
   position: relative;
-  left: 10%;
+  left: 20%;
   /* top: 10%;    */
   /* bottom: 10%; */
-  /* transform: translateX(-50%); */
+  transform: translateY(50%);
   display:flex;
-  gap: 15px; /* div 사이 간격 */
   z-index: 20;
   flex-direction: column;
-  justify-content: flex-end;
-}
-
-.btn {
    z-Index: 20;
    cursor: pointer;
 }
