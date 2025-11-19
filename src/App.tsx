@@ -13,8 +13,11 @@ import arrow from "./assets/logos/arrow.svg";
 import FloatingActions from "./components/Floating";
 import Project_btn from "./components/Project_btn";
 import InfoTxt from "./components/info_txt";
+import Project_detail from "./components/project_detail";
 
 export default function App() {
+
+
 
   const [selected, setSelected] = useState<"personal" | "team">("personal");
 
@@ -44,9 +47,20 @@ export default function App() {
   const s1 = useInView<HTMLElement>();
   const s4 = useInView<HTMLElement>();
 
+
   return (
+
     
     <div className="outer">
+
+<section className="section_G" id="frame2">
+         <Project_detail/>
+     </section>
+     <section className="section_G" id="frame2"/>
+     
+
+       
+
         <section ref= {s1.ref} className={`section_W ${s1.inView ? "is-in" : ""}`}  id="frame1">
           <div className="all_box">
             <Lottie animationData={IndexAnim}/>
@@ -188,6 +202,8 @@ export default function App() {
       </section>
 
       <FloatingActions />
+
+       
     </div>
   );
 }
