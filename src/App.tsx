@@ -4,14 +4,15 @@ import "./App.css";
 import Lottie from "./components/LottieSection";
 import useInView from "./hooks/useInView";
 import IndexAnim from "./assets/Index.json";
-import InfoAnim from "./assets/info.json";
-import ProjectsAnim from "./assets/Projects(bgX).json";
+import InfoAnim from "./assets/info(no_txt).json";
+import ProjectsAnim from "./assets/Projects(no_txt).json";
 import ThanksAnim from "./assets/Thanks.json";
 import velIcon from "./assets/logos/vel.svg";
 import gitIcon from "./assets/logos/git.svg";
 import arrow from "./assets/logos/arrow.svg";
 import FloatingActions from "./components/Floating";
 import Project_btn from "./components/Project_btn";
+import InfoTxt from "./components/info_txt";
 
 export default function App() {
 
@@ -87,6 +88,11 @@ export default function App() {
 
         <Lottie animationData={InfoAnim} />
 
+        <section className="absolute inset-0 z-30">
+
+                  <InfoTxt />
+          </section>
+
           <div className="arrow"
              onClick={() => scrollToNextSection("frame2")}
              >
@@ -98,6 +104,7 @@ export default function App() {
                   />
          </div>
 
+     
       </section>
 
       <section className="section_G" id="frame3">
