@@ -188,11 +188,21 @@ html, body, #root {
 .scroll-container {
   position: relative;
   display: flex;
-  overflow-x: auto;      /* 가로 스크롤 허용 */
+  overflow-x: scroll;      /* 가로 스크롤 허용 */
   scroll-behavior: smooth; /* 부드러운 스크롤 */
   gap: 150px;
 }
 
+.section-scroll {
+ 
+  position: relative;
+  display: flex;
+  height: 800px;
+  width: 760px;
+  left: 25%;
+
+  
+}
 
 .project-btn {
   background-color: rgba(84,84,84,.5);
@@ -208,6 +218,8 @@ html, body, #root {
   justify-content: center;
   color: #fff;
   padding: 16px;
+  gap: 100px;
+  
   
 }
 

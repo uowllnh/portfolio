@@ -24,25 +24,29 @@ export default function Projects({ selected }: { selected: Tab }) {
     return <section className="py-8 text-center text-gray-400">표시할 프로젝트가 없습니다.</section>;
   }
 
-return (
-  <section 
-  className="relative flex h-[800px] w-[760px] left-[25%]">
-    {/* 래퍼만 위치 지정 */}
-    <div className="scroll-container px-14">
-    
+return ( 
+<section className="section-scroll"> 
+{/* 래퍼만 위치 지정 */} 
+<div className="scroll-container px-14 snap-x snap-mandatory  [&::-webkit-scrollbar]:hidden scrollbar-none"> 
   
-    {list.map(p => (
-      <section>
-      <div className="project-btn top-[40%]">
-      <div className="project-btn-txt"> 
-      <h1 className="text-3xl font-semibold">{p.title}</h1> 
-      <h2 className="text-2xl">{p.desc}</h2> </div>
-     </div>
-       </section>
-    ))}
+  {list.map((p,i) => ( 
+    <section
 
-</div>
+    key={i}
+          className="snap-start shrink-0 flex"
+        >
+        
+        <div className="flex w-[760px] justify-center">
+      <div className="project-btn top-[40%]"> 
+        <div className="project-btn-txt"> 
+          <h1 className="text-3xl font-semibold">{p.title}</h1> 
+          <h2 className="text-2xl">{p.desc}</h2> 
+          </div> 
+          </div> 
+          </div>
+          </section> 
+          ))} 
+          </div> 
+          </section> );
 
-  </section>
-);
 }

@@ -5,6 +5,7 @@ export default function info_txt() {
 <div className="info-txt flex gap-30 ml-[250px]">
  <div className="column_1 grid justify-end gap-30">
 
+
 <section className="w-60"> 
 <div className="font-bold tracking-[2px]">KIM YURI / 김 유 리 </div>
 <div className="text-[18px]">FRONT-END </div>
