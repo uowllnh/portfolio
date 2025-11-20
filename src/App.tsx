@@ -11,9 +11,9 @@ import velIcon from "./assets/logos/vel.svg";
 import gitIcon from "./assets/logos/git.svg";
 import arrow from "./assets/logos/arrow.svg";
 import FloatingActions from "./components/Floating";
-import Project_btn from "./components/Project_btn";
+import Project_btn from "./notUse/Project_btn(notUse)";
 import InfoTxt from "./components/info_txt";
-import Project_detail from "./components/project_detail";
+import ProjectSection from "./components/ProjectSection";
 
 export default function App() {
 
@@ -52,15 +52,6 @@ export default function App() {
 
     
     <div className="outer">
-
-<section className="section_G" id="frame2">
-         <Project_detail/>
-     </section>
-     <section className="section_G" id="frame2"/>
-     
-
-       
-
         <section ref= {s1.ref} className={`section_W ${s1.inView ? "is-in" : ""}`}  id="frame1">
           <div className="all_box">
             <Lottie animationData={IndexAnim}/>
@@ -124,7 +115,7 @@ export default function App() {
       <section className="section_G" id="frame3">
 
           <Lottie animationData={ProjectsAnim} />
-          <section className="absolute inset-0 w-screen h-screen z-30">
+          <section className="absolute inset-0 w-screen h-screen z-30 ">
             <div className="relative flex">
                 <div className="txt_button_container">
                     <button className={`text-btn ${selected === "personal"
@@ -134,8 +125,9 @@ export default function App() {
                         ? "is-active" : "is-inactive"}`} onClick={() => setSelected("team")}>
                           Team </button>
                 </div>
-                  
-                  <Project_btn selected={selected}  />
+               
+                  <ProjectSection selected={selected} />
+                
                 </div> 
                 </section>
                 
