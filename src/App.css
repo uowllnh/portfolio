@@ -277,3 +277,12 @@ background-color: #00000023;
   outline-offset: 1px;
   transform: scale(0.97);     /* 살짝 눌리는 효과 */
 }
+
+.projectimg {
+display: flex;
+width: 385px;
+height: 220px;
+background: #00000050;
+cursor: pointer;
+object-fit: cover;
+}
