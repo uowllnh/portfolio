@@ -1,16 +1,23 @@
+import githublogo from "../../assets/logos/GitHub.svg";
+import javalogo from "../../assets/logos/Java.svg";
+import figmalogo from "../../assets/logos/Figma.svg";
+import androidlogo from "../../assets/logos/AndroidStudio.png";
+import ProjectDetail from "../ProjectDetail";
+
+
 export default function ProjectDetailYoring() {
   return (
-    <div className="space-y-4">
-      <h2 className="text-2xl font-bold">Yoring - 스마트폰 요금제 추천 앱</h2>
-      <p className="text-gray-600">사용자 데이터 소비 패턴 기반으로 요금제를 추천하는 팀 프로젝트입니다.</p>
-
-      <ul className="list-disc pl-6 text-gray-700">
-        <li>참여 인원: FE 1명</li>
-        <li>기간: 2025.01 ~ 2025.06</li>
-        <li>주요 기술: Kotlin, Android Studio</li>
-      </ul>
-
-      <img src="/images/yoring-preview.png" alt="Yoring" className="rounded-lg w-full" />
-    </div>
+    <ProjectDetail
+    title = "Yoring"
+    description = "사용자 데이터 소비 패턴 기반으로 요금제를 추천하는 앱"
+    member = {"FE 1명\nBE 2명"}
+    detail = "다양한 모션을 넣고, 한눈에 포트폴리오를 확인할 수 있도록 디자인 하였으며, 개발까지 진행하였습니다.다양한 모션을 넣고, 한눈에 포트폴리오를 확인할 수 있도록 디자인 하였으며, 개발까지 진행하였습니다.다양한 모션을 넣고, 한눈에 포트폴리오를 확인할 수 있도록 디자인 하였으며, 개발까지 진행하였습니다.다양한 모션을 넣고, 한눈에 포트폴리오를 확인할 수 있도록 디자인 하였으며, 개발까지 진행하였습니다.다양한 모션을 넣고, 한눈에 포트폴리오를 확인할 수 있도록 디자인 하였으며, 개발까지 진행하였습니다."
+    period = "2023.11 ~ 2024.11"
+    stack = {[githublogo, javalogo, figmalogo, androidlogo]}
+    />
   );
 }
+
+
+
+

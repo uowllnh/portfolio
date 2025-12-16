@@ -1,12 +1,12 @@
 // ProjectSection.tsx
 import { useState } from "react";
-import { useMemo} from "react";
 import ProjectButton from "./ProjectButton";
 import ProjectTemplate from "./ProjectTemplate";
 import ProjectDetailYoring from "./details/Yoring";
 import ProjectDetailStoryKid from "./details/StoryKid";
 import ProjectDetailMetaPlanner from "./details/MetaPlanner";
 import ProjectDetailPortfolio from "./details/Portfolio";
+
 
 
 type Tab = "personal" | "team";

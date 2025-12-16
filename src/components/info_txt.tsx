@@ -34,7 +34,7 @@ export default function info_txt() {
           <div className="font-bold"> 성결대학교 컴퓨터공학과 </div>
           </section>
           <section>
-    <div className="text-[15px]"> 2016 ~ 2018</div>
+    <div className="text-[15px]"> 2015 ~ 2018</div>
       <div className="font-bold"> 광명북고등학교 </div>
       </section>
        </div>
