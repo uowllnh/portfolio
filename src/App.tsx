@@ -1,9 +1,10 @@
 // src/App.tsx
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import "./App.css";
 import Lottie from "./components/LottieSection";
 import useInView from "./hooks/useInView";
-import IndexAnim from "./assets/Index.json";
+import IndexAnim from "./assets/index.json";
 import InfoAnim from "./assets/info(no_txt).json";
 import ProjectsAnim from "./assets/Projects(no_txt).json";
 import ThanksAnim from "./assets/Thanks.json";
@@ -11,15 +12,38 @@ import velIcon from "./assets/logos/vel.svg";
 import gitIcon from "./assets/logos/git.svg";
 import arrow from "./assets/logos/arrow.svg";
 import FloatingActions from "./components/Floating";
-import Project_btn from "./notUse/Project_btn(notUse)";
 import InfoTxt from "./components/info_txt";
 import ProjectSection from "./components/ProjectSection";
+import { seedAllProjects } from "./api/seedProject";
+
+
+
 
 export default function App() {
 
-
-
+  const queryClient = useQueryClient();
   const [selected, setSelected] = useState<"personal" | "team">("personal");
+
+  const seedProjectsMutation = useMutation({
+    mutationFn: async () => {
+      const result = await seedAllProjects();
+
+      if (!result.ok) {
+        throw result.error instanceof Error
+          ? result.error
+          : new Error("프로젝트 데이터 저장에 실패했습니다.");
+      }
+
+      return result;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["projects"] });
+    },
+  });
+
+  const handleSeedProjects = () => {
+    seedProjectsMutation.mutate();
+  };
 
   const scrollToSection = (targetId: string) => {
     document.getElementById(targetId)?.scrollIntoView({
@@ -46,17 +70,26 @@ export default function App() {
 
   const s1 = useInView<HTMLElement>();
   const s4 = useInView<HTMLElement>();
+  const seedStatus = seedProjectsMutation.isPending
+    ? "저장 중..."
+    : seedProjectsMutation.isSuccess
+      ? "Firebase 저장 완료"
+      : seedProjectsMutation.isError
+        ? `저장 실패: ${seedProjectsMutation.error.message}`
+        : "";
 
 
   return (
 
     
     <div className="outer">
+      
         <section ref= {s1.ref} className={`section_W ${s1.inView ? "is-in" : ""}`}  id="frame1">
           <div className="all_box">
             <Lottie animationData={IndexAnim}/>
         <div className="button_container fade-up-stagger"
         >
+          
               <div className="btn"
                    onClick={() => window.open("https://velog.io/@pooh00316", "_blank")}
                 >
@@ -117,6 +150,11 @@ export default function App() {
           <Lottie animationData={ProjectsAnim} />
           <section className="absolute inset-0 w-screen h-screen z-30 ">
             <div className="relative flex">
+              <div className="flex flex-col gap-[8px]">
+                  <p className="text-[14px] text-white">{seedStatus}</p>
+                )
+                
+              </div>
                 <div className="txt_button_container">
                     <button className={`text-btn ${selected === "personal"
                         ? "is-active" : "is-inactive"}`} onClick={() => setSelected("personal")}>

@@ -1,5 +1,4 @@
 // src/components/FloatingActions.tsx
-import React from "react";
 import feedbackIcon from "../assets/logos/feedback_btn.svg";  // 적당한 아이콘
 
 export default function FloatingActions() {

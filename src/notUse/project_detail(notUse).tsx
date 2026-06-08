@@ -1,6 +1,6 @@
 import Project_detail from "../components/ProjectDetail";
 
-export default function project_detail(click : string) {
+export default function project_detail() {
 
 
 <div>

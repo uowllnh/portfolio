@@ -12,7 +12,7 @@ type ProjectButtonProps = {
 
 
 
-export default function ProjectButton({ id, title, desc, onClick, type, href }: ProjectButtonProps) {
+export default function ProjectButton({ id, title, desc, onClick }: ProjectButtonProps) {
   return ( 
     <section className="snap-start shrink-0 flex">
         <div className="flex w-[760px] justify-center">

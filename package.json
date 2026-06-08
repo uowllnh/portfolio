@@ -12,6 +12,8 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.100.10",
+    "firebase": "^12.13.0",
     "gsap": "^3.13.0",
     "lottie-react": "^2.4.1",
     "prop-types": "^15.8.1",

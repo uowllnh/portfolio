@@ -10,7 +10,7 @@ type Props = {
   overlayClassName?: string; // ✅ 버튼 묶음을 어디에 둘지 클래스 전달
 };
 
-export default function LottieSection({ animationData, segment, children,overlayClassName }: Props) {
+export default function LottieSection({ animationData, segment, children, overlayClassName }: Props) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const lottieRef = useRef<any>(null);
   const [total, setTotal] = useState(0);
@@ -124,6 +124,12 @@ export default function LottieSection({ animationData, segment, children,overlay
           hideOnTransparent: true,
         }}
       />
+
+      {children && (
+        <div className={overlayClassName}>
+          {children}
+        </div>
+      )}
 
     </section>
   );

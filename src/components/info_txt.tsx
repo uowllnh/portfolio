@@ -53,7 +53,11 @@ export default function info_txt() {
               <div>CSS </div>
               <div>JavaScript </div>
               <div> React </div>
+              <div> React-Native </div>
               <div> Type Script </div>
+              <div> Next.js </div>
+              <div> Vue </div>
+              <div> TailWind </div>
       </div>
 
     <div>
