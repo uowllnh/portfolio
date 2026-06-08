@@ -41,10 +41,6 @@ export default function App() {
     },
   });
 
-  const handleSeedProjects = () => {
-    seedProjectsMutation.mutate();
-  };
-
   const scrollToSection = (targetId: string) => {
     document.getElementById(targetId)?.scrollIntoView({
       behavior: "smooth",
@@ -152,8 +148,6 @@ export default function App() {
             <div className="relative flex">
               <div className="flex flex-col gap-[8px]">
                   <p className="text-[14px] text-white">{seedStatus}</p>
-                )
-                
               </div>
                 <div className="txt_button_container">
                     <button className={`text-btn ${selected === "personal"
