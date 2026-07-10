@@ -1,13 +1,27 @@
 /* 접근성: 사용자 ‘모션 줄이기’ 선호시 애니메이션 최소화 */
 @media (prefers-reduced-motion: reduce) {
-  .fade-up, .fade-up-stagger > * { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .fade-up,
+  .fade-up-stagger > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* 기본 페이드-업 키프레임 */
 @keyframes fadeUp {
-  0%   { opacity: 0; transform: translateY(12px) scale(0.98); }
-  60%  { opacity: 1; transform: translateY(0)    scale(1.0);  }
-  100% { opacity: 1; transform: translateY(0)    scale(1.0);  }
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .fab-Icon {
@@ -16,35 +30,46 @@
   object-fit: contain;
 }
 
-.fab-wrap{
+.fab-wrap {
   position: fixed;
   right: calc(env(safe-area-inset-right, 0px) + clamp(50px, 2vw, 24px));
   bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(50px, 2vw, 24px));
   display: flex;
-  flex-direction: column;        /* 세로로 두 개 쌓기 (원하면 row로 변경) */
+  flex-direction: column; /* 세로로 두 개 쌓기 (원하면 row로 변경) */
   gap: 30px;
-  z-index: 1000;                 /* 다른 요소보다 항상 위 */
+  z-index: 1000; /* 다른 요소보다 항상 위 */
   pointer-events: auto;
 }
 
 /* 버튼 기본 스타일 (원형 아이콘 버튼) */
-.fab-btn{
-  width: 80px; height: 80px;
-  display: grid; place-items: center;
-  border: none; outline: none;
+.fab-btn {
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border: none;
+  outline: none;
   border-radius: 999px;
   background: rgb(255, 255, 255);
-  box-shadow: 0 10px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.12);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    0 2px 6px rgba(0, 0, 0, 0.12);
   backdrop-filter: saturate(1.2) blur(4px);
   cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.2s ease;
 }
-.fab-btn:hover{
+.fab-btn:hover {
   transform: translateY(-1px) scale(1.04);
-  box-shadow: 0 14px 30px rgba(0,0,0,.22), 0 3px 8px rgba(0,0,0,.14);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.22),
+    0 3px 8px rgba(0, 0, 0, 0.14);
 }
-.fab-btn:active{ transform: translateY(0) scale(0.98); }
-
+.fab-btn:active {
+  transform: translateY(0) scale(0.98);
+}
 
 /* 트리거 전 초기 상태 */
 .fade-up,
@@ -56,7 +81,7 @@
 
 /* 보일 때 활성화 */
 .is-in .fade-up {
-  animation: fadeUp 700ms ease-out 3.5s forwards;         /* ← “조금 늦게” */
+  animation: fadeUp 700ms ease-out 3.5s forwards; /* ← “조금 늦게” */
 }
 
 /* 자식 여러개일 때 순차(Stagger) 등장 */
@@ -74,20 +99,28 @@
 
 /* 화살표도 살짝 늦게 */
 .is-in .arrow {
-  animation: fadeUp 700ms ease-out forwards, arrow-bounce 1.8s ease-in-out infinite 900ms;
+  animation:
+    fadeUp 700ms ease-out forwards,
+    arrow-bounce 1.8s ease-in-out infinite 900ms;
   animation-delay: 4.2s; /* 1.2초 후에 서서히 나타남 */
-  opacity: 0; transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
 }
 
 /* 기존 바운스 유지 (이미 있으셨으면 이 부분 생략 가능) */
 @keyframes arrow-bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%      { transform: translateX(-50%) translateY(6px); }
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
 }
 
-
-
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -104,31 +137,33 @@ html, body, #root {
   position: relative;
 }
 
-
-.section_G, .section_W {
+.section_G,
+.section_W {
   width: 100%;
   height: 100%;
   position: relative; /* ✅ 꼭 필요 (absolute inset-0 기준) */
   scroll-snap-align: start;
   scroll-snap-stop: always;
-    z-index: 0;
+  z-index: 0;
 }
 
-.section_W{background-image: url('./assets/back.png');}
-.section_G{background: #333333;}
-
+.section_W {
+  background-image: url("./assets/back.png");
+}
+.section_G {
+  background: #333333;
+}
 
 .button_container {
   position: absolute;
-  left: 50%;      /* 1920 기준 X=960 => 50% */
-  top: 80%;  
+  left: 50%; /* 1920 기준 X=960 => 50% */
+  top: 80%;
   bottom: 10%;
   transform: translateX(-50%);
   display: flex;
   gap: 35px; /* div 사이 간격 */
   z-index: 20;
   flex-shrink: 0;
- 
 }
 
 .txt_button_container {
@@ -137,50 +172,47 @@ html, body, #root {
   /* top: 10%;    */
   /* bottom: 10%; */
   transform: translateY(50%);
-  display:flex;
+  display: flex;
   z-index: 20;
   flex-direction: column;
-   z-Index: 20;
-   cursor: pointer;
+  z-index: 20;
+  cursor: pointer;
 }
 
 .text-btn {
-  position: relative; 
+  position: relative;
   z-index: 20;
-  background: none;           /* 배경 제거 */
-  border: none;     
-  color: #696969;            
+  background: none; /* 배경 제거 */
+  border: none;
+  color: #696969;
   font-weight: 700;
   font-size: 50px;
   cursor: pointer;
   padding: 4px 8px;
 }
 
-
-
-
 .button-container .btn:hover .txt_button_container {
   transform: scale(1.05);
 }
 
 .arrow {
-       transform: translateX(-50%);
-       position: absolute;
-       left: 50%;
-       top: 90%;
-       bottom: 10%;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  bottom: 10%;
 }
 
 /* 선택된 버튼 = 흰색 유지 */
 .text-btn.is-active {
-  color: #ffffff;                  /* gray-900 */
+  color: #ffffff; /* gray-900 */
 }
 
 /* 비선택 버튼 = 회색 */
-.text-btn.is-inactive {         /* gray-200 */
-  color: #696969;                  /* gray-600 */
+.text-btn.is-inactive {
+  /* gray-200 */
+  color: #696969; /* gray-600 */
 }
-
 
 .scroll-container {
   position: relative;
@@ -202,24 +234,21 @@ html, body, #root {
 }
 
 .section-scroll {
- 
   position: relative;
   display: flex;
   height: 800px;
   width: 760px;
   left: 25%;
-
-  
 }
 
 .project-btn {
-  background-color: rgba(84,84,84,.5);
+  background-color: rgba(84, 84, 84, 0.5);
   border-radius: 25px;
   z-index: 20;
   cursor: pointer;
   width: 642px;
   height: 374px;
-  box-shadow: 12px 14px 33.8px rgba(0,0,0,.25);;
+  box-shadow: 12px 14px 33.8px rgba(0, 0, 0, 0.25);
   display: flex;
   position: relative;
   align-items: center;
@@ -229,56 +258,54 @@ html, body, #root {
   gap: 100px;
 }
 
-
 .project-btn-txt {
-  color:#ffffff;
+  color: #ffffff;
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 20px;
 }
 
-
 .info-txt {
-font-size: 22px;
-z-index: 20;
-color: #ffffff;
-position: relative;
+  font-size: 22px;
+  z-index: 20;
+  color: #ffffff;
+  position: relative;
 }
 
 .info-txt-bold {
-font-size: 35px;
-font-weight: bold;
-z-index: 20;
-color: #ffffff;
-position: relative;
-letter-spacing: -3px;
+  font-size: 35px;
+  font-weight: bold;
+  z-index: 20;
+  color: #ffffff;
+  position: relative;
+  letter-spacing: -3px;
 }
 
 .page-delete {
-background-color: #00000000;
-font-size: 30px;
-  border: none; 
+  background-color: #00000000;
+  font-size: 30px;
+  border: none;
   width: 70px;
   height: 70px;
 }
 
 .page-delete:hover {
-border: none; 
-background-color: #00000023;
+  border: none;
+  background-color: #00000023;
 }
 
 .page-delete:active {
   outline: 2px solid #ffffff72; /* 빨간색 (Tailwind red-500) */
   outline-offset: 1px;
-  transform: scale(0.97);     /* 살짝 눌리는 효과 */
+  transform: scale(0.97); /* 살짝 눌리는 효과 */
 }
 
 .projectimg {
-display: flex;
-width: 385px;
-height: 220px;
-background: #00000050;
-cursor: pointer;
-object-fit: cover;
+  display: flex;
+  width: 900px;
+  height: 430px;
+  background: #00000050;
+  cursor: pointer;
+  object-fit: cover;
 }

@@ -1,36 +1,46 @@
-import androidStudioLogo from "../assets/logos/AndroidStudio.png";
-import figmaLogo from "../assets/logos/Figma.svg";
-import gitLogo from "../assets/logos/git.svg";
-import githubLogo from "../assets/logos/GitHub.svg";
-import javaLogo from "../assets/logos/Java.svg";
-import nextJsLogo from "../assets/logos/NextJs.png";
-import reactLogo from "../assets/logos/react.svg";
-import tailwindLogo from "../assets/logos/Tailwind.png";
-import typeScriptLogo from "../assets/logos/TypeScript.png";
-import viteLogo from "../assets/logos/Vite.png";
-import reactNativeLogo from "../assets/logos/react_native.png";
-import kotlinLogo from "../assets/logos/Kotlin.png";
-import fireBaseLogo from "../assets/logos/FireBase.png";
-import photoShopLogo from "../assets/logos/PhotoShop.png";
+const skillLabels = {
+  AndroidStudio: "Android Studio",
+  Figma: "Figma",
+  Git: "Git",
+  GitHub: "GitHub",
+  Java: "Java",
+  NextJs: "Next.js",
+  React: "React",
+  Tailwind: "Tailwind CSS",
+  TypeScript: "TypeScript",
+  Vite: "Vite",
+  ReactNative: "React Native",
+  Kotlin: "Kotlin",
+  FireBase: "Firebase",
+  PhotoShop: "Photoshop",
+} as const;
 
-const skillLogos = {
-  AndroidStudio: androidStudioLogo,
-  Figma: figmaLogo,
-  Git: gitLogo,
-  GitHub: githubLogo,
-  Java: javaLogo,
-  NextJs: nextJsLogo,
-  React: reactLogo,
-  Tailwind: tailwindLogo,
-  TypeScript: typeScriptLogo,
-  Vite: viteLogo,
-  ReactNative: reactNativeLogo,
-  Kotlin: kotlinLogo,
-FireBase: fireBaseLogo,
-PhotoShop: photoShopLogo
-};
+export type SkillName = keyof typeof skillLabels;
 
-export type SkillName = keyof typeof skillLogos;
+const frontendSkills = new Set<SkillName>([
+  "NextJs",
+  "React",
+  "Tailwind",
+  "TypeScript",
+  "Vite",
+  "ReactNative",
+  "Java",
+  "Kotlin",
+]);
+
+const backendSkills = new Set<SkillName>(["FireBase"]);
+
+function getSkillBadgeClass(name: SkillName) {
+  if (frontendSkills.has(name)) {
+    return "border-green-400/40 bg-green-500/15 text-green-200";
+  }
+
+  if (backendSkills.has(name)) {
+    return "border-red-400/40 bg-red-500/15 text-red-200";
+  }
+
+  return "border-white/25 bg-white/10 text-[#D8D8D8]";
+}
 
 interface SkillsProps {
   names?: SkillName[];
@@ -40,13 +50,12 @@ function Skills({ names = [] }: SkillsProps) {
   return (
     <div className="flex gap-4 flex-wrap justify-center mt-[37px]">
       {names.map((name) => (
-        <img
+        <span
           key={name}
-          src={skillLogos[name]}
-          alt={name}
-          title={name}
-          className="w-[40px] h-[40px] object-contain"
-        />
+          className={`inline-flex min-h-[38px] items-center justify-center border px-[16px] py-[8px] text-[15px] font-medium ${getSkillBadgeClass(name)}`}
+        >
+          {skillLabels[name]}
+        </span>
       ))}
     </div>
   );
