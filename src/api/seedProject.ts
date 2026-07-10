@@ -27,11 +27,7 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number) {
     promise,
     new Promise<never>((_, reject) => {
       window.setTimeout(() => {
-        reject(
-          new Error(
-            "Firestore 응답 시간이 초과되었습니다. Firebase 설정, Firestore Rules, 네트워크 상태를 확인해 주세요."
-          )
-        );
+        reject(new Error(""));
       }, timeoutMs);
     }),
   ]);
@@ -42,10 +38,10 @@ export async function seedAllProjects() {
     await withTimeout(
       Promise.all(
         localProjects.map(({ id, ...data }) =>
-          setDoc(doc(db, "projects", id), data)
-        )
+          setDoc(doc(db, "projects", id), data),
+        ),
       ),
-      10000
+      10000,
     );
 
     console.log("프로젝트 데이터 전체 저장 완료");
@@ -57,17 +53,20 @@ export async function seedAllProjects() {
 }
 
 export async function fetchProjects() {
-  const snapshot = await withTimeout(getDocs(collection(db, "projects")), 10000);
+  const snapshot = await withTimeout(
+    getDocs(collection(db, "projects")),
+    10000,
+  );
   const remoteProjects = snapshot.docs.map((projectDoc) => ({
     id: projectDoc.id,
     ...projectDoc.data(),
   })) as ProjectDocument[];
   const remoteProjectsById = new Map(
-    remoteProjects.map((project) => [project.id, project])
+    remoteProjects.map((project) => [project.id, project]),
   );
   const localProjectIds = new Set(localProjects.map((project) => project.id));
   const mergedProjects = localProjects.map(
-    (project) => remoteProjectsById.get(project.id) ?? project
+    (project) => remoteProjectsById.get(project.id) ?? project,
   );
 
   remoteProjects.forEach((project) => {

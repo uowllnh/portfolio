@@ -6,13 +6,9 @@ import ProjectTemplate from "./ProjectTemplate";
 import ProjectDetail from "./ProjectDetail";
 import { fetchProjects, localProjects } from "../api/seedProject";
 
-
 type Tab = "personal" | "team";
 
-
-
-export default function ProjectSection ({ selected }: { selected: Tab }) {
-
+export default function ProjectSection({ selected }: { selected: Tab }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const {
     data: projects = localProjects,
@@ -28,14 +24,16 @@ export default function ProjectSection ({ selected }: { selected: Tab }) {
     retry: 1,
   });
 
-  const filteredProjects = projects.filter((project) => project.category === selected);
+  const filteredProjects = projects.filter(
+    (project) => project.category === selected,
+  );
   const selectedProject = projects.find((project) => project.id === selectedId);
   const dataStatus = isError
-    ? `Firebase 조회 실패: ${error instanceof Error ? error.message : "알 수 없는 오류"}`
+    ? `Firebase  실패: ${error instanceof Error ? error.message : ""}`
     : isFetching && isPlaceholderData
-      ? "Firebase 데이터 불러오는 중..."
+      ? ""
       : isSuccess && !isPlaceholderData
-        ? "Firebase 데이터 표시 중"
+        ? ""
         : "";
 
   const handleClick = (id: string) => {
@@ -48,7 +46,7 @@ export default function ProjectSection ({ selected }: { selected: Tab }) {
 
   return (
     <section className="flex relative ml-[300px]">
-      <section className="section-scroll"> 
+      <section className="section-scroll">
         <div className="scroll-container">
           {filteredProjects.map((project) => (
             <ProjectButton
@@ -62,12 +60,9 @@ export default function ProjectSection ({ selected }: { selected: Tab }) {
           ))}
         </div>
         {dataStatus && (
-          <p className="mt-[16px] text-[14px] text-white">
-            {dataStatus}
-          </p>
+          <p className="mt-[16px] text-[14px] text-white">{dataStatus}</p>
         )}
-        </section>
-
+      </section>
 
       {/* ✅ 상세보기 (선택 시만 보임) */}
       {selectedProject && (
