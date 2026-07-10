@@ -4,11 +4,11 @@ import type { ProjectProps } from "../ProjectDetail";
 
 export const weddingInvitationData: ProjectProps = {
   title: "모바일 청첩장",
-  description: "예식 정보와 참석 안내를 한 화면 흐름으로 정리한 모바일 웹 청첩장",
+  description: "예식 정보와 참석 안내를 정리한 모바일 청첩장",
   member: "개인 프로젝트",
   detail:
     "모바일에서 자연스럽게 읽히는 청첩장 경험을 목표로 제작한 웹 프로젝트입니다. 초대 문구, 예식 정보, 갤러리, 오시는 길, 참석 안내처럼 하객이 실제로 확인하는 정보를 우선순위에 맞춰 배치하고, 작은 화면에서도 문장과 버튼이 안정적으로 보이도록 구성했습니다.",
-  period: "2025",
+  period: "2026",
   stack: ["React", "TypeScript", "Tailwind", "Vite", "Figma", "GitHub"],
   myRoles: [
     "모바일 청첩장 화면 흐름 설계",
@@ -42,7 +42,8 @@ export const weddingInvitationData: ProjectProps = {
         "초대 문구, 사진, 예식 정보가 같은 비중으로 배치되면 하객이 날짜와 장소처럼 가장 중요한 정보를 찾기 어려웠습니다.",
       after:
         "첫 화면에서는 분위기를 전달하고, 바로 다음 흐름에서 날짜, 시간, 장소, 연락처를 확인할 수 있도록 섹션 순서를 재정리했습니다.",
-      result: "하객이 감성적인 분위기를 느끼면서도 필요한 정보를 빠르게 확인할 수 있도록 개선했습니다.",
+      result:
+        "하객이 감성적인 분위기를 느끼면서도 필요한 정보를 빠르게 확인할 수 있도록 개선했습니다.",
       image: {
         src: cover,
         alt: "모바일 청첩장 대표 화면",
