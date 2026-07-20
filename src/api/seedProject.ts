@@ -27,7 +27,7 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number) {
     promise,
     new Promise<never>((_, reject) => {
       window.setTimeout(() => {
-        reject(new Error(""));
+        reject(new Error("Firestore request timed out"));
       }, timeoutMs);
     }),
   ]);
@@ -53,27 +53,32 @@ export async function seedAllProjects() {
 }
 
 export async function fetchProjects() {
-  const snapshot = await withTimeout(
-    getDocs(collection(db, "projects")),
-    10000,
-  );
-  const remoteProjects = snapshot.docs.map((projectDoc) => ({
-    id: projectDoc.id,
-    ...projectDoc.data(),
-  })) as ProjectDocument[];
-  const remoteProjectsById = new Map(
-    remoteProjects.map((project) => [project.id, project]),
-  );
-  const localProjectIds = new Set(localProjects.map((project) => project.id));
-  const mergedProjects = localProjects.map(
-    (project) => remoteProjectsById.get(project.id) ?? project,
-  );
+  try {
+    const snapshot = await withTimeout(
+      getDocs(collection(db, "projects")),
+      10000,
+    );
+    const remoteProjects = snapshot.docs.map((projectDoc) => ({
+      id: projectDoc.id,
+      ...projectDoc.data(),
+    })) as ProjectDocument[];
+    const remoteProjectsById = new Map(
+      remoteProjects.map((project) => [project.id, project]),
+    );
+    const localProjectIds = new Set(localProjects.map((project) => project.id));
+    const mergedProjects = localProjects.map(
+      (project) => remoteProjectsById.get(project.id) ?? project,
+    );
 
-  remoteProjects.forEach((project) => {
-    if (!localProjectIds.has(project.id)) {
-      mergedProjects.push(project);
-    }
-  });
+    remoteProjects.forEach((project) => {
+      if (!localProjectIds.has(project.id)) {
+        mergedProjects.push(project);
+      }
+    });
 
-  return mergedProjects;
+    return mergedProjects;
+  } catch (error) {
+    console.warn("Firebase 프로젝트 조회 실패, 로컬 데이터를 표시합니다.", error);
+    return localProjects;
+  }
 }

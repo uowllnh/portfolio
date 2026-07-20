@@ -12,11 +12,6 @@ export default function ProjectSection({ selected }: { selected: Tab }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const {
     data: projects = localProjects,
-    error,
-    isError,
-    isFetching,
-    isPlaceholderData,
-    isSuccess,
   } = useQuery({
     queryKey: ["projects"],
     queryFn: fetchProjects,
@@ -28,13 +23,6 @@ export default function ProjectSection({ selected }: { selected: Tab }) {
     (project) => project.category === selected,
   );
   const selectedProject = projects.find((project) => project.id === selectedId);
-  const dataStatus = isError
-    ? `Firebase  실패: ${error instanceof Error ? error.message : ""}`
-    : isFetching && isPlaceholderData
-      ? ""
-      : isSuccess && !isPlaceholderData
-        ? ""
-        : "";
 
   const handleClick = (id: string) => {
     setSelectedId(id);
@@ -59,9 +47,6 @@ export default function ProjectSection({ selected }: { selected: Tab }) {
             />
           ))}
         </div>
-        {dataStatus && (
-          <p className="mt-[16px] text-[14px] text-white">{dataStatus}</p>
-        )}
       </section>
 
       {/* ✅ 상세보기 (선택 시만 보임) */}
