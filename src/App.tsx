@@ -78,7 +78,7 @@ export default function App() {
   return (
 
     
-    <div className="outer page-enter">
+    <div className="outer">
       
         <section ref= {s1.ref} className={`section_W ${s1.inView ? "is-in" : ""}`}  id="frame1">
           <div className="all_box">
