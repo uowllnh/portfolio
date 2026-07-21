@@ -3,6 +3,13 @@ import cover from "../../assets/image/wedding_invitation_cover.png";
 import image1 from "../../assets/image/weddingImage1.png";
 import image2 from "../../assets/image/weddingImage2.png";
 import image3 from "../../assets/image/weddingImage3.png";
+import IMG1 from "../../assets/image/wedding/1.png";
+import IMG2 from "../../assets/image/wedding/2.png";
+import IMG3 from "../../assets/image/wedding/3.png";
+import IMG4 from "../../assets/image/wedding/4.png";
+import IMG5 from "../../assets/image/wedding/5.png";
+import IMG6 from "../../assets/image/wedding/6.png";
+import IMG7 from "../../assets/image/wedding/7.png";
 import type { ProjectProps } from "../ProjectDetail";
 
 export const weddingInvitationData: ProjectProps = {
@@ -111,9 +118,39 @@ export const weddingInvitationData: ProjectProps = {
   ],
   screenshots: [
     {
-      src: cover,
-      alt: "모바일 청첩장 대표 이미지",
-      caption: "모바일 청첩장 대표 이미지",
+      src: IMG1,
+      alt: "모바일 청첩장 메인 이미지",
+      caption: "모바일 청첩장 메인 이미지",
+    },
+    {
+      src: IMG2,
+      alt: "연락처 및 인사",
+      caption: "연락처 및 인사",
+    },
+    {
+      src: IMG3,
+      alt: "결혼식 날짜 카운트",
+      caption: "결혼식 날짜 카운트",
+    },
+    {
+      src: IMG4,
+      alt: "오시는길 안내 및 네이버 지도 연동",
+      caption: "오시는길 안내 및 네이버 지도 연동",
+    },
+    {
+      src: IMG5,
+      alt: "네비게이션 모바일 앱 연결 및 대중교통",
+      caption: "네비게이션 모바일 앱 연결 및 대중교통",
+    },
+    {
+      src: IMG6,
+      alt: "방명록",
+      caption: "방명록",
+    },
+    {
+      src: IMG7,
+      alt: "계좌번호 버튼",
+      caption: "계좌번호 버튼",
     },
   ],
   learnings: [
