@@ -1,5 +1,8 @@
 import ProjectDetail from "../ProjectDetail";
-import cover from "../../assets/image/wedding_invitation_cover.svg";
+import cover from "../../assets/image/wedding_invitation_cover.png";
+import image1 from "../../assets/image/weddingImage1.png";
+import image2 from "../../assets/image/weddingImage2.png";
+import image3 from "../../assets/image/weddingImage3.png";
 import type { ProjectProps } from "../ProjectDetail";
 
 export const weddingInvitationData: ProjectProps = {
@@ -46,8 +49,8 @@ export const weddingInvitationData: ProjectProps = {
       result:
         "문구, 계좌, 갤러리처럼 변경 가능성이 높은 콘텐츠를 더 쉽게 수정할 수 있고, 기능 추가 시 영향 범위를 줄일 수 있도록 개선했습니다.",
       image: {
-        src: cover,
-        alt: "모바일 청첩장 대표 화면",
+        src: image1,
+        alt: "모바일 청첩장 섹션 이미지",
         caption: "청첩장 화면 구성",
       },
     },
@@ -59,6 +62,11 @@ export const weddingInvitationData: ProjectProps = {
         "입력값 검증, 제출 중 상태, 저장 완료 상태를 나누어 Firebase 저장 요청 전후의 흐름을 명확히 설계했습니다.",
       result:
         "사용자 입력 데이터의 신뢰도를 높이고, 비동기 저장 과정에서도 사용자가 현재 상태를 이해할 수 있는 폼 구조로 개선했습니다.",
+      image: {
+        src: image2,
+        alt: "모바일 청첩장 참석 의사 이미지",
+        caption: "청첩장 입력 폼",
+      },
     },
     {
       title: "모바일 인터랙션 안정화",
@@ -68,6 +76,11 @@ export const weddingInvitationData: ProjectProps = {
         "카드 단위 스크롤 기준, 섹션 id 기반 이동, 계좌 복사 및 송금 버튼 동작을 분리해 인터랙션별 책임을 명확히 정리했습니다.",
       result:
         "모바일 환경에서도 주요 조작이 예측 가능하게 동작하고, 사용자가 필요한 행동을 빠르게 수행할 수 있도록 안정성을 높였습니다.",
+      image: {
+        src: image3,
+        alt: "모바일 청첩장 계좌",
+        caption: "청첩장 계좌버튼",
+      },
     },
   ],
   troubleshooting: [

@@ -1,6 +1,7 @@
 /* 접근성: 사용자 ‘모션 줄이기’ 선호시 애니메이션 최소화 */
 @media (prefers-reduced-motion: reduce) {
   .fade-up,
+  .page-enter,
   .fade-up-stagger > * {
     animation: none !important;
     opacity: 1 !important;
@@ -22,6 +23,22 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+@keyframes pageEnterUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: pageEnterUp 900ms ease-out both;
+  will-change: transform, opacity;
 }
 
 .fab-Icon {
