@@ -1,7 +1,16 @@
 // ProjectDetailYoring.jsx
 import ProjectDetail from "../ProjectDetail";
-import img1 from "../../assets/image/portfolio1.png";
-import img2 from "../../assets/image/portfolio2.png";
+import Cover from "../../assets/image/yoring_Cover.png";
+import img1 from "../../assets/image/yoring1.png";
+import img2 from "../../assets/image/yoring2.png";
+import imgb1 from "../../assets/image/yoring_b1.png";
+import imgb2 from "../../assets/image/yoring_b2.png";
+import img3 from "../../assets/image/yoring3.png";
+import img4 from "../../assets/image/yoring4.png";
+import img5 from "../../assets/image/yoring5.png";
+import img6 from "../../assets/image/yoring6.png";
+import img7 from "../../assets/image/yoring7.png";
+import img8 from "../../assets/image/yoring8.png";
 import type { ProjectProps } from "../ProjectDetail";
 
 export const yoringData: ProjectProps = {
@@ -39,7 +48,7 @@ export const yoringData: ProjectProps = {
       after: "추천, 비교, 혜택 정보를 중심으로 화면 구조를 재배치했습니다.",
       result: "사용자가 원하는 기능에 더 빠르게 접근할 수 있도록 개선했습니다.",
       image: {
-        src: img1,
+        src: imgb1,
         alt: "Yoring 메인 화면 구조 개선",
         caption: "메인 화면 개선",
       },
@@ -51,7 +60,7 @@ export const yoringData: ProjectProps = {
       result:
         "사용자가 현재 단계를 쉽게 인지하고 추천 결과까지 자연스럽게 이동할 수 있도록 개선했습니다.",
       image: {
-        src: img2,
+        src: imgb2,
         alt: "Yoring 설문 흐름 개선",
         caption: "설문 UX 개선",
       },
@@ -96,9 +105,39 @@ export const yoringData: ProjectProps = {
       caption: "메인 화면",
     },
     {
+      src: img3,
+      alt: "Yoring 추천 화면",
+      caption: "요금제 원하는 데이터 및 금액 입력 화면",
+    },
+    {
+      src: img8,
+      alt: "Yoring 실제 데이터량 및 전화 메세지 사용량 화면",
+      caption: "실제 데이터량 및 전화 메세지 사용량 화면",
+    },
+    {
       src: img2,
       alt: "Yoring 추천 화면",
+      caption: "요금제 추천 기타사항 입력 화면",
+    },
+    {
+      src: img4,
+      alt: "Yoring 추천 화면",
       caption: "추천 화면",
+    },
+    {
+      src: img5,
+      alt: "Yoring 스마트폰 기기 정보 화면",
+      caption: "스마트폰 기기 정보 화면",
+    },
+    {
+      src: img6,
+      alt: "Yoring 스마트폰 기기 상세정보 화면",
+      caption: "스마트폰 기기 상세정보 화면",
+    },
+    {
+      src: img7,
+      alt: "Yoring 전체 요금제 찜 목록 화면",
+      caption: "전체 요금제 찜 목록",
     },
   ],
   learnings: [
@@ -110,8 +149,7 @@ export const yoringData: ProjectProps = {
     "초기에는 화면 디자인 중심으로 접근했지만, 이후 사용자 흐름과 데이터 구조를 함께 고려하는 것이 중요하다는 점을 배웠습니다.",
     "프론트엔드 개발자는 UI 구현뿐 아니라 데이터가 화면에 어떻게 연결되는지 이해해야 한다는 점을 경험했습니다.",
   ],
-  image1: img1,
-  image2: img2,
+  image1: Cover,
 };
 
 export default function ProjectDetailYoring() {
