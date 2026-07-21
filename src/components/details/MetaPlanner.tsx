@@ -1,7 +1,11 @@
 // ProjectDetailMetaPlanner.jsx
 import ProjectDetail from "../ProjectDetail";
+import cover from "../../assets/image/meta_Cover.png";
 import img1 from "../../assets/image/meta_b1.png";
 import img2 from "../../assets/image/meta_b2.png";
+import img3 from "../../assets/image/meta_b3.png";
+import img4 from "../../assets/image/meta_b4.png";
+import img5 from "../../assets/image/meta_b5.png";
 import type { ProjectProps } from "../ProjectDetail";
 
 export const metaPlannerData: ProjectProps = {
@@ -105,6 +109,21 @@ export const metaPlannerData: ProjectProps = {
       alt: "Meta Planner 플래너 화면",
       caption: "플래너 화면",
     },
+    {
+      src: img3,
+      alt: "Meta Planner 뽀모도로 화면",
+      caption: "뽀모도로 화면",
+    },
+    {
+      src: img4,
+      alt: "Meta Planner 명언 화면",
+      caption: "오늘의 명언 화면",
+    },
+    {
+      src: img5,
+      alt: "Meta Planner 오늘의 습관 화면",
+      caption: "오늘의 습관 캘린더 화면",
+    },
   ],
   learnings: [
     "생산성 앱에서는 많은 기능보다 사용자가 바로 실행할 수 있는 단순한 흐름이 중요하다는 점을 배웠습니다.",
@@ -116,8 +135,7 @@ export const metaPlannerData: ProjectProps = {
     "저장소와 배포 링크를 공개하기 어려운 프로젝트일수록 담당 범위, 구현 흐름, 트러블슈팅을 구체적으로 기록하는 것이 중요하다는 점을 느꼈습니다.",
     "앞으로는 타이머 기록 저장, 통계 화면, 사용자별 루틴 분석 기능까지 확장해보고자 합니다.",
   ],
-  image1: img1,
-  image2: img2,
+  image1: cover,
 };
 
 export default function ProjectDetailMetaPlanner() {
