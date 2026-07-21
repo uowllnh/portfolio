@@ -330,9 +330,28 @@ body,
 
 .projectimg {
   display: flex;
-  width: 900px;
-  height: 430px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 620px;
+  height: auto;
   background: #00000050;
   cursor: pointer;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.project-detail-thumb,
+.project-detail-shot {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.project-detail-thumb {
+  max-height: 280px;
+}
+
+.project-detail-shot {
+  max-height: 560px;
 }

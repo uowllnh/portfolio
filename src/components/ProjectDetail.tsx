@@ -327,14 +327,14 @@ export default function detail_page({
                     {item.image && (
                       <button
                         type="button"
-                        className="h-[180px] w-full overflow-hidden rounded-none border-0 bg-black/30 p-0"
+                        className="flex w-full items-center justify-center overflow-hidden rounded-none border-0 bg-black/30 p-0"
                         onClick={() => setSelectedImage(item.image!.src)}
                         aria-label={`${item.image.alt} 크게 보기`}
                       >
                         <img
                           src={item.image.src}
                           alt={item.image.alt}
-                          className="h-full w-full object-cover"
+                          className="project-detail-thumb"
                         />
                       </button>
                     )}
@@ -351,14 +351,14 @@ export default function detail_page({
                   <figure key={image.src} className="flex flex-col gap-[12px]">
                     <button
                       type="button"
-                      className="h-[240px] w-full overflow-hidden rounded-none border-0 bg-black/30 p-0"
+                      className="flex w-full items-center justify-center overflow-hidden rounded-none border-0 bg-black/30 p-0"
                       onClick={() => setSelectedImage(image.src)}
                       aria-label={`${image.alt} 크게 보기`}
                     >
                       <img
                         src={image.src}
                         alt={image.alt}
-                        className="h-full w-full object-cover"
+                        className="project-detail-shot"
                       />
                     </button>
                     {image.caption && (
