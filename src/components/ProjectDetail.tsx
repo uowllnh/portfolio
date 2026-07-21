@@ -115,7 +115,7 @@ export default function detail_page({
         <p className="text-[96px] font-extrabold mt-[30px] z-10">{title}</p>
         <p className="text-[24px] "> {description}</p>
 
-        <section className="상단 flex flex-col items-center gap-[100px] mt-[96px] mb-[162px]">
+        <section className="상단 flex flex-col items-center gap-[100px] mt-[96px] mb-[100px]">
           <div className="flex flex-col items-center">
             <p className="text-[20px] "> 기술 스택</p>
             <Skills names={stack} />
@@ -157,7 +157,7 @@ export default function detail_page({
                 href={link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-[9px] border border-white/40 px-[22px] py-[12px] text-[17px] transition-colors hover:bg-white hover:text-[#545454]"
+                className="flex items-center gap-[9px] border border-white/40 px-[12px] py-[12px] text-[17px] transition-colors hover:bg-white hover:text-[#545454]"
               >
                 <ExternalLink size={20} aria-hidden="true" />
                 관련 링크
@@ -169,7 +169,7 @@ export default function detail_page({
                 href={url}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-[9px] px-[22px] py-[22px] rounded-full transition-colors hover:bg-white"
+                className="flex items-center gap-[9px] px-[12px] py-[12px] rounded-full transition-colors hover:bg-white"
               >
                 <ExternalLink
                   size={40}
@@ -184,7 +184,7 @@ export default function detail_page({
                 href={githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-[9px] px-[22px] py-[22px] rounded-full transition-colors hover:bg-white"
+                className="flex items-center gap-[9px] px-[12px] py-[12px] rounded-full transition-colors hover:bg-white"
               >
                 <img
                   src={githubIcon}
@@ -198,7 +198,7 @@ export default function detail_page({
 
         <div className="border-b w-[717px] border-white z-10" />
 
-        <section className="하단 mt-[162px] flex flex-col items-center gap-[110px] pb-[160px]">
+        <section className="하단 mt-[130px] flex flex-col items-center gap-[110px] pb-[160px]">
           {mainImage && (
             <div className="flex justify-center">
               <img

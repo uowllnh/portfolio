@@ -148,6 +148,16 @@ export default function App() {
             <div className="relative flex">
               <div className="flex flex-col gap-[8px]">
                   <p className="text-[14px] text-white">{seedStatus}</p>
+                  {import.meta.env.DEV && (
+                    <button
+                      type="button"
+                      className="firebase-seed-btn"
+                      onClick={() => seedProjectsMutation.mutate()}
+                      disabled={seedProjectsMutation.isPending}
+                    >
+                      Firebase 데이터 업데이트
+                    </button>
+                  )}
               </div>
                 <div className="txt_button_container">
                     <button className={`text-btn ${selected === "personal"

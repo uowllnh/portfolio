@@ -214,6 +214,26 @@ body,
   color: #696969; /* gray-600 */
 }
 
+.firebase-seed-btn {
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.firebase-seed-btn:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.firebase-seed-btn:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
 .scroll-container {
   position: relative;
   display: flex;
@@ -283,11 +303,18 @@ body,
 }
 
 .page-delete {
-  background-color: #00000000;
+  background-color: transparent;
+  color: #ffffff !important;
   font-size: 30px;
   border: none;
   width: 70px;
   height: 70px;
+  padding: 0;
+}
+
+.page-delete svg {
+  color: #ffffff;
+  stroke: currentColor;
 }
 
 .page-delete:hover {
