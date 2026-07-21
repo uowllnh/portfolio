@@ -1,7 +1,13 @@
 // ProjectDetailYupdduk.jsx
 import ProjectDetail from "../ProjectDetail";
-import img1 from "../../assets/image/portfolio1.png";
-import img2 from "../../assets/image/portfolio2.png";
+import Cover from "../../assets/image/yupdduk_Cover.png";
+import imgb1 from "../../assets/image/yupdduk_b1.jpeg";
+import imgb2 from "../../assets/image/yupdduk_b2.jpeg";
+import img1 from "../../assets/image/yupdduk1.png";
+import img2 from "../../assets/image/yupdduk2.png";
+import img3 from "../../assets/image/yupdduk3.png";
+import img4 from "../../assets/image/yupdduk4.png";
+import img5 from "../../assets/image/yupdduk5.png";
 import type { ProjectProps } from "../ProjectDetail";
 
 export const yupddukData: ProjectProps = {
@@ -42,7 +48,7 @@ export const yupddukData: ProjectProps = {
       result:
         "사용자가 주요 기능과 메뉴를 더 빠르게 인지할 수 있도록 개선했습니다.",
       image: {
-        src: img1,
+        src: imgb1,
         alt: "엽기떡볶이 메인 화면 개선",
         caption: "메인 화면 개선",
       },
@@ -55,7 +61,7 @@ export const yupddukData: ProjectProps = {
       result:
         "주문 전 사용자가 선택 내용을 쉽게 확인할 수 있도록 개선했습니다.",
       image: {
-        src: img2,
+        src: imgb2,
         alt: "엽기떡볶이 주문 구조 개선",
         caption: "주문 화면 개선",
       },
@@ -107,6 +113,21 @@ export const yupddukData: ProjectProps = {
       alt: "엽기떡볶이 주문 화면",
       caption: "주문 화면",
     },
+    {
+      src: img3,
+      alt: "엽기떡볶이 주문 화면",
+      caption: "주문 화면",
+    },
+    {
+      src: img4,
+      alt: "엽기떡볶이 주문 화면",
+      caption: "주문 화면",
+    },
+    {
+      src: img5,
+      alt: "엽기떡볶이 주문 화면",
+      caption: "주문 화면",
+    },
   ],
   learnings: [
     "리디자인에서는 예쁜 화면보다 사용자가 헷갈리는 지점을 먼저 찾는 것이 중요하다는 점을 배웠습니다.",
@@ -117,8 +138,7 @@ export const yupddukData: ProjectProps = {
     "처음에는 UI 개선에 집중했지만, 구현 과정에서 컴포넌트 구조와 데이터 흐름을 함께 고려해야 한다는 점을 배웠습니다.",
     "사용자의 주문 흐름을 기준으로 화면을 나누면 개발 구조도 자연스럽게 정리된다는 점을 경험했습니다.",
   ],
-  image1: img1,
-  image2: img2,
+  image1: Cover,
 };
 
 export default function ProjectDetailYupdduk() {
