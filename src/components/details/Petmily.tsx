@@ -1,12 +1,10 @@
 import ProjectDetail from "../ProjectDetail";
-import cover from "../../assets/image/wedding_invitation_cover.png";
-import IMG1 from "../../assets/image/wedding/1.png";
-import IMG2 from "../../assets/image/wedding/2.png";
-import IMG3 from "../../assets/image/wedding/3.png";
-import IMG4 from "../../assets/image/wedding/4.png";
-import IMG5 from "../../assets/image/wedding/5.png";
-import IMG6 from "../../assets/image/wedding/6.png";
-import IMG7 from "../../assets/image/wedding/7.png";
+import cover from "../../assets/image/petmily_Cover.png";
+import IMG1 from "../../assets/image/pet1.png";
+import IMG2 from "../../assets/image/pet2.png";
+import IMG3 from "../../assets/image/pet3.png";
+import IMG4 from "../../assets/image/pet4.png";
+import IMG5 from "../../assets/image/pet5.png";
 import type { ProjectProps } from "../ProjectDetail";
 
 export const petMilyData: ProjectProps = {
@@ -113,16 +111,6 @@ export const petMilyData: ProjectProps = {
       src: IMG5,
       alt: "네비게이션 모바일 앱 연결 및 대중교통",
       caption: "네비게이션 모바일 앱 연결 및 대중교통",
-    },
-    {
-      src: IMG6,
-      alt: "방명록",
-      caption: "방명록",
-    },
-    {
-      src: IMG7,
-      alt: "계좌번호 버튼",
-      caption: "계좌번호 버튼",
     },
   ],
   learnings: [
