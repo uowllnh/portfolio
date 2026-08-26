@@ -19,9 +19,9 @@ export const localProjects: ProjectDocument[] = [
   { id: "yoring", category: "team", ...yoringData },
   { id: "metaplanner", category: "team", ...metaPlannerData },
   { id: "portfolio", category: "personal", ...portfolioData },
+  { id: "petmily", category: "team", ...petMilyData },
   { id: "wedding-invitation", category: "personal", ...weddingInvitationData },
   { id: "yupdduk", category: "personal", ...yupddukData },
-  { id: "petmily", category: "team", ...petMilyData },
 ];
 
 function withTimeout<T>(promise: Promise<T>, timeoutMs: number) {
