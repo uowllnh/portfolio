@@ -5,6 +5,7 @@ import { portfolioData } from "../components/details/Portfolio";
 import type { ProjectProps } from "../components/ProjectDetail";
 import { yoringData } from "../components/details/Yoring";
 import { yupddukData } from "../components/details/Yupdduk";
+import { petMilyData } from "../components/details/Petmily";
 import { weddingInvitationData } from "../components/details/WeddingInvitation";
 
 export type ProjectCategory = "personal" | "team";
@@ -20,6 +21,7 @@ export const localProjects: ProjectDocument[] = [
   { id: "portfolio", category: "personal", ...portfolioData },
   { id: "wedding-invitation", category: "personal", ...weddingInvitationData },
   { id: "yupdduk", category: "personal", ...yupddukData },
+  { id: "petmily", category: "team", ...petMilyData },
 ];
 
 function withTimeout<T>(promise: Promise<T>, timeoutMs: number) {
@@ -78,7 +80,10 @@ export async function fetchProjects() {
 
     return mergedProjects;
   } catch (error) {
-    console.warn("Firebase 프로젝트 조회 실패, 로컬 데이터를 표시합니다.", error);
+    console.warn(
+      "Firebase 프로젝트 조회 실패, 로컬 데이터를 표시합니다.",
+      error,
+    );
     return localProjects;
   }
 }
