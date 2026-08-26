@@ -9,7 +9,7 @@ export const portfolioData: ProjectProps = {
       description: "개인 브랜딩과 프로젝트 소개를 위한 반응형 포트폴리오 웹사이트",
       member: "개인 프로젝트",
       detail: "프론트엔드 개발자로서 프로젝트 경험과 UI/UX 역량을 효과적으로 전달하기 위해 포트폴리오 웹사이트를 제작했습니다. 단순히 결과물을 나열하는 방식이 아니라 프로젝트별 문제 정의, 개선 과정, 구현 내용을 함께 보여주는 구조로 설계했습니다. React와 TypeScript를 기반으로 컴포넌트 구조를 설계하고, 반응형 UI와 스크롤 인터랙션을 적용했습니다.",
-      period: "2025.03",
+      period: "2026.03",
       stack: ["React", "TypeScript", "Tailwind", "Vite", "Figma", "GitHub"],
       myRoles: [
         "포트폴리오 전체 UX/UI 설계",

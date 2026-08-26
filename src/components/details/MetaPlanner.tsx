@@ -14,7 +14,7 @@ export const metaPlannerData: ProjectProps = {
   member: "팀 프로젝트",
   detail:
     "Meta Planner는 사용자의 목표 관리와 집중 루틴 형성을 돕기 위한 모바일 플래너 앱입니다. 기존 플래너 앱은 기능은 많지만 화면 정보량이 많아 사용자가 피로감을 느끼거나 핵심 기능에 집중하기 어려운 경우가 있었습니다. 이를 개선하기 위해 일정 관리, 집중 타이머, 루틴 확인 기능을 중심으로 직관적인 모바일 UI를 설계했습니다. 프로젝트 저장소는 팀 프로젝트 초기 설정상 private으로 관리되어 GitHub 및 배포 링크는 제공하지 않았으며, 본 포트폴리오에서는 제가 담당한 화면 구현, 기능 흐름, 기술적 의사결정과 문제 해결 과정을 중심으로 정리했습니다.",
-  period: "2025.03 ~ ing",
+  period: "2025.03 ~ 2025.07",
   stack: ["Kotlin", "AndroidStudio", "FireBase", "Figma", "GitHub"],
   myRoles: [
     "UI/UX 기획 및 전체 화면 설계",

@@ -18,7 +18,7 @@ export const yupddukData: ProjectProps = {
   url: "https://yupddeok.web.app/",
   detail:
     "기존 엽기떡볶이 앱은 메뉴 탐색 구조가 복잡하고 주문 과정에서 선택 상태를 확인하기 어려운 문제가 있었습니다. 특히 메뉴 리스트, 옵션 선택, 주문 확인 화면에서 정보 위계가 명확하지 않아 사용자가 주문 흐름을 따라가기 어려웠습니다. 이를 개선하기 위해 메인 화면, 메뉴 리스트, 주문 화면 UX를 중심으로 리디자인을 진행했습니다.",
-  period: "2025.03",
+  period: "2026.03",
   stack: ["React", "TypeScript", "Tailwind", "NextJs", "Figma", "GitHub"],
   myRoles: [
     "UX 문제 정의 및 개선 방향 설계",

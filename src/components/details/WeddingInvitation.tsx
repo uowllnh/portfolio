@@ -19,7 +19,7 @@ export const weddingInvitationData: ProjectProps = {
   url: "https://wedding-project-uowllnh.web.app/",
   detail:
     "모바일에서 자연스럽게 읽히는 청첩장 경험을 목표로 제작한 웹 프로젝트입니다. 초대 문구, 예식 정보, 갤러리, 오시는 길, 참석 안내처럼 하객이 실제로 확인하는 정보를 우선순위에 맞춰 배치하고, 작은 화면에서도 문장과 버튼이 안정적으로 보이도록 구성했습니다.",
-  period: "2026",
+  period: "2026.07",
   stack: ["React", "TypeScript", "Tailwind", "Vite", "Figma", "GitHub"],
   myRoles: [
     "모바일 청첩장 화면 흐름 설계",

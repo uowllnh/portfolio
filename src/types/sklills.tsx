@@ -13,6 +13,7 @@ const skillLabels = {
   Kotlin: "Kotlin",
   FireBase: "Firebase",
   PhotoShop: "Photoshop",
+  Dart: "Dart",
 } as const;
 
 export type SkillName = keyof typeof skillLabels;
