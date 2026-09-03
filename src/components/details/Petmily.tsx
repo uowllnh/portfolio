@@ -11,10 +11,9 @@ export const petMilyData: ProjectProps = {
   title: "펫밀리",
   description: "반려동물의 산책과 건강기록 및 관리 앱",
   member: "팀 프로젝트",
-  url: "https://wedding-project-uowllnh.web.app/",
   detail:
     "반려동물의 건강과 일상을 한곳에서 관리할 수 있는 반려동물 라이프케어 앱입니다. 반려동물 정보를 기반으로 산책 기록, 예방접종 일정, 건강 관리 등 필요한 정보를 편리하게 기록하고 확인할 수 있도록 설계했습니다.",
-  period: "2026.07",
+  period: "2026.07 ~",
   stack: ["Kotlin", "Dart", "FireBase", "Figma", "GitHub"],
   myRoles: [
     "화면 흐름 설계",
@@ -89,28 +88,28 @@ export const petMilyData: ProjectProps = {
   screenshots: [
     {
       src: IMG1,
-      alt: "모바일 청첩장 메인 이미지",
-      caption: "모바일 청첩장 메인 이미지",
+      alt: "메인 홈 화면",
+      caption: "메인 홈 화면",
     },
     {
       src: IMG2,
-      alt: "연락처 및 인사",
-      caption: "연락처 및 인사",
+      alt: "산책 기록 첫 화면",
+      caption: "산책 기록 첫 화면",
     },
     {
       src: IMG3,
-      alt: "결혼식 날짜 카운트",
-      caption: "결혼식 날짜 카운트",
+      alt: "산책 기록 중 화면",
+      caption: "산책 기록 중 화면",
     },
     {
       src: IMG4,
-      alt: "오시는길 안내 및 네이버 지도 연동",
-      caption: "오시는길 안내 및 네이버 지도 연동",
+      alt: "반려동물 건강기록 관리 화면",
+      caption: "반려동물 건강기록 관리 화면",
     },
     {
       src: IMG5,
-      alt: "네비게이션 모바일 앱 연결 및 대중교통",
-      caption: "네비게이션 모바일 앱 연결 및 대중교통",
+      alt: "예방접종 상세 내역 화면",
+      caption: "예방접종 상세 내역 화면",
     },
   ],
   learnings: [

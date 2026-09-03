@@ -2,7 +2,7 @@ export default function InfoTxt() {
   return (
     <section className="grid place-items-center min-h-screen px-8 ml-70">
       <div className="info-txt flex flex-col lg:flex-row gap-20 max-w-5xl w-full">
-        <div className="column_1 grid justify-end gap-30">
+        <div className="column-1 grid justify-end gap-30">
           <section className="w-60">
             <div className="font-bold tracking-[2px]">KIM YURI / 김유리</div>
             <div className="text-[18px]">FRONT-END</div>

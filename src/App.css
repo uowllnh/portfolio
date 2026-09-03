@@ -355,3 +355,34 @@ body,
 .project-detail-shot {
   max-height: 560px;
 }
+
+/* 태블릿 */
+@media (max-width: 900px) {
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 모바일 */
+@media (max-width: 600px) {
+  .info-txt {
+    font-size: 18px;
+    z-index: 20;
+    color: #ffffff;
+    position: relative;
+  }
+
+  .info-txt-bold {
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 20;
+    color: #ffffff;
+    letter-spacing: -3px;
+  }
+
+  .column-1 {
+    justify-self: start;
+    transform: translateX(-120px);
+    background-color: #fe0303;
+  }
+}
