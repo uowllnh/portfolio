@@ -11,16 +11,19 @@ export default function ProjectTemplate({
 }: ProjectTemplateProps) {
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900/40"
+      className="project-modal-backdrop"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="프로젝트 상세 정보"
     >
-      <div className="h-screen overflow-y-scroll snap-y snap-mandatory ">
-        <section className=" flex justify-center items-center z-10">
+      <div className="project-modal-scroll">
+        <section className="project-modal-positioner">
           <div
-            className="w-[1150px] flex flex-col  bg-[#545454E6] rounded-[25px] items-center text-white mt-[100px] mb-[70px] mx-[100px] shadow-[12px_14px_70px_rgba(0,0,0,0.6)]"
+            className="project-modal-panel"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center z-0 mt-[25px] ml-[1000px]">
+            <div className="project-modal-close">
               <button
                 onClick={onClose}
                 className="page-delete flex items-center justify-center"
@@ -34,7 +37,7 @@ export default function ProjectTemplate({
                 />
               </button>
             </div>
-            <div className="clear-both z-20">{children}</div>
+            <div className="project-modal-content">{children}</div>
           </div>
         </section>
       </div>

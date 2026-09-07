@@ -59,8 +59,8 @@ function DetailSection({
   children: ReactNode;
 }) {
   return (
-    <section className="w-[900px] flex flex-col gap-[28px]">
-      <h2 className="text-[28px] font-bold">{title}</h2>
+    <section className="project-detail-section">
+      <h2>{title}</h2>
       {children}
     </section>
   );
@@ -68,10 +68,10 @@ function DetailSection({
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="flex flex-col gap-[14px] text-[18px] text-[#E6E6E6] leading-[2rem]">
+    <ul className="project-detail-list">
       {items.map((item) => (
-        <li key={item} className="flex gap-[12px]">
-          <span className="mt-[12px] h-[5px] w-[5px] shrink-0 rounded-full bg-white" />
+        <li key={item}>
+          <span className="project-detail-bullet" />
           <span>{item}</span>
         </li>
       ))}
@@ -110,48 +110,46 @@ export default function detail_page({
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
-    <section className=" flex justify-center items-center z-10">
-      <div className="w-[1150px] flex flex-col items-center text-white mt-[100px]">
-        <p className="text-[96px] font-extrabold mt-[30px] z-10">{title}</p>
-        <p className="text-[24px] "> {description}</p>
+    <section className="project-detail">
+      <div className="project-detail-inner">
+        <h1 className="project-detail-title">{title}</h1>
+        <p className="project-detail-description">{description}</p>
 
-        <section className="상단 flex flex-col items-center gap-[100px] mt-[96px] mb-[100px]">
-          <div className="flex flex-col items-center">
-            <p className="text-[20px] "> 기술 스택</p>
+        <section className="project-detail-summary">
+          <div className="project-stack">
+            <h2>기술 스택</h2>
             <Skills names={stack} />
           </div>
 
-          <div className="flex flex-row flex-wrap justify-center gap-x-[160px] gap-y-[60px]">
-            <div className="flex flex-col items-center">
-              <p className="text-[20px]  text-[#B5B5B5]"> 참여 인원 </p>
-              <p className="text-[20px] mt-[37px] whitespace-pre-line">
+          <div className="project-meta-grid">
+            <div className="project-meta-item">
+              <span>참여 인원</span>
+              <p>
                 {member}
               </p>
             </div>
 
-            <div className="flex flex-col items-center">
-              <p className="text-[20px]  text-[#B5B5B5]"> 기간 </p>
-              <p className="text-[20px] mt-[37px]"> {period} </p>
+            <div className="project-meta-item">
+              <span>기간</span>
+              <p>{period}</p>
             </div>
 
             {role && (
-              <div className="flex flex-col items-center">
-                <p className="text-[20px]  text-[#B5B5B5]"> 담당 역할 </p>
-                <p className="text-[20px] mt-[37px] whitespace-pre-line">
-                  {role}
-                </p>
+              <div className="project-meta-item">
+                <span>담당 역할</span>
+                <p>{role}</p>
               </div>
             )}
 
             {contribution && (
-              <div className="flex flex-col items-center">
-                <p className="text-[20px]  text-[#B5B5B5]"> 기여도 </p>
-                <p className="text-[20px] mt-[37px]"> {contribution} </p>
+              <div className="project-meta-item">
+                <span>기여도</span>
+                <p>{contribution}</p>
               </div>
             )}
           </div>
 
-          <div className="flex flex-row flex-wrap justify-center gap-x-[160px] gap-y-[60px]">
+          <div className="project-links">
             {link && (
               <a
                 href={link}
@@ -196,9 +194,9 @@ export default function detail_page({
           </div>
         </section>
 
-        <div className="border-b w-[717px] border-white z-10" />
+        <div className="project-detail-divider" />
 
-        <section className="하단 mt-[130px] flex flex-col items-center gap-[110px] pb-[160px]">
+        <section className="project-detail-body">
           {mainImage && (
             <div className="flex justify-center">
               <img
@@ -211,7 +209,7 @@ export default function detail_page({
           )}
 
           <DetailSection title="프로젝트 개요">
-            <p className="text-[18px] text-[#E6E6E6] leading-[2.5rem]">
+            <p className="project-detail-copy">
               {" "}
               {detail}{" "}
             </p>
@@ -249,11 +247,11 @@ export default function detail_page({
 
           {troubleshooting && troubleshooting.length > 0 && (
             <DetailSection title="트러블슈팅">
-              <div className="flex flex-col gap-[24px]">
+              <div className="project-detail-card-list">
                 {troubleshooting.map((item) => (
                   <article
                     key={item.issue}
-                    className="border border-white/15 bg-white/5 p-[28px]"
+                    className="project-detail-card"
                   >
                     <p className="text-[17px] leading-[2rem] text-[#D8D8D8]">
                       <span className="font-semibold text-white">Issue. </span>
@@ -293,11 +291,11 @@ export default function detail_page({
 
           {improvements && improvements.length > 0 && (
             <DetailSection title="개선한 점">
-              <div className="flex flex-col gap-[28px]">
+              <div className="project-detail-card-list">
                 {improvements.map((item) => (
                   <article
                     key={item.title}
-                    className="grid grid-cols-[1fr_280px] gap-[28px] border border-white/15 bg-white/5 p-[28px]"
+                    className="project-improvement-card"
                   >
                     <div className="flex flex-col gap-[18px]">
                       <h3 className="text-[22px] font-semibold">
@@ -346,7 +344,7 @@ export default function detail_page({
 
           {screenshots && screenshots.length > 0 && (
             <DetailSection title="화면 및 결과 이미지">
-              <div className="grid grid-cols-2 gap-[28px]">
+              <div className="project-screenshot-grid">
                 {screenshots.map((image) => (
                   <figure key={image.src} className="flex flex-col gap-[12px]">
                     <button
@@ -386,7 +384,7 @@ export default function detail_page({
 
           {selectedImage && (
             <div
-              className="fixed inset-0 bg-black/30 flex items-center justify-center z-50"
+              className="project-lightbox"
               onClick={() => setSelectedImage(null)}
             >
               <img

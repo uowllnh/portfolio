@@ -68,9 +68,25 @@ export async function fetchProjects() {
       remoteProjects.map((project) => [project.id, project]),
     );
     const localProjectIds = new Set(localProjects.map((project) => project.id));
-    const mergedProjects = localProjects.map(
-      (project) => remoteProjectsById.get(project.id) ?? project,
-    );
+    const mergedProjects = localProjects.map((project) => {
+      const remoteProject = remoteProjectsById.get(project.id);
+
+      if (!remoteProject) return project;
+
+      // 펫밀리는 개발 중인 비공개 프로젝트이므로 원격 데이터에 남아 있는
+      // 이전 공개 링크가 화면에 다시 노출되지 않도록 로컬 정보를 우선합니다.
+      if (project.id === "petmily") {
+        return {
+          ...remoteProject,
+          ...project,
+          link: undefined,
+          url: undefined,
+          githubUrl: undefined,
+        };
+      }
+
+      return remoteProject;
+    });
 
     remoteProjects.forEach((project) => {
       if (!localProjectIds.has(project.id)) {

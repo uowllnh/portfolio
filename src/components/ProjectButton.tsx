@@ -16,15 +16,18 @@ export default function ProjectButton({
   onClick,
 }: ProjectButtonProps) {
   return (
-    <section className="snap-start shrink-0 flex">
-      <div className="flex w-[full] justify-center">
-        <div onClick={() => onClick(id)} className="project-btn top-[40%]">
-          <div className="project-btn-txt">
-            <h1 className="text-3xl font-semibold">{title}</h1>
-            <h2 className="text-2xl">{desc}</h2>
-          </div>
-        </div>
-      </div>
-    </section>
+    <article className="project-card-wrap">
+      <button
+        type="button"
+        onClick={() => onClick(id)}
+        className="project-btn"
+        aria-label={`${title} 프로젝트 상세 보기`}
+      >
+        <span className="project-btn-txt">
+          <strong className="project-card-title">{title}</strong>
+          <span className="project-card-description">{desc}</span>
+        </span>
+      </button>
+    </article>
   );
 }

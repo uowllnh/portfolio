@@ -1,83 +1,56 @@
+const frontEndSkills = [
+  "Kotlin", "Python", "Java", "HTML", "CSS", "JavaScript", "React",
+  "React Native", "TypeScript", "Next.js", "Vue", "Tailwind CSS",
+];
+
+const toolSkills = [
+  "Photoshop", "Figma", "GitHub", "Notion", "Jira", "Firebase Hosting",
+];
+
+const backendSkills = ["Firebase Authentication", "Cloud Firestore"];
+
+function SkillGroup({ title, skills }: { title: string; skills: string[] }) {
+  return (
+    <div className="skill-group">
+      <h3>{title}</h3>
+      <ul>
+        {skills.map((skill) => <li key={skill}>{skill}</li>)}
+      </ul>
+    </div>
+  );
+}
+
 export default function InfoTxt() {
   return (
-    <section className="grid place-items-center min-h-screen px-8 ml-70">
-      <div className="info-txt flex flex-col lg:flex-row gap-20 max-w-5xl w-full">
-        <div className="column-1 grid justify-end gap-30">
-          <section className="w-60">
-            <div className="font-bold tracking-[2px]">KIM YURI / 김유리</div>
-            <div className="text-[18px]">FRONT-END</div>
-
-            <div className="flex flex-col items-end gap-5">
-              <div>1999 / 03 / 16</div>
-              <div>+82 10 7652 0790</div>
-              <div>uowllnh@gmail.com</div>
+    <section className="info-section" aria-labelledby="info-name">
+      <div className="info-layout">
+        <div className="info-profile-column">
+          <header className="info-profile">
+            <h1 id="info-name">KIM YURI / 김유리</h1>
+            <p className="info-role">FRONT-END</p>
+            <div className="info-contact">
+              <p>1999 / 03 / 16</p>
+              <a href="tel:+821076520790">+82 10 7652 0790</a>
+              <a href="mailto:uowllnh@gmail.com">uowllnh@gmail.com</a>
             </div>
-          </section>
+          </header>
 
-          <section className="EDUCATION">
-            <div className="info-txt-bold">EDUCATION</div>
-
-            <div className="flex justify-center">
-              <div className="relative flex justify-center items-center w-30 text-[#757575]">
-                <div className="absolute w-1 h-15 bg-current" />
-                <div className="absolute flex flex-col gap-13">
-                  <div className="w-3 h-3 rounded-full bg-current" />
-                  <div className="w-3 h-3 rounded-full bg-current" />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-5 w-55">
-                <section>
-                  <div className="text-[15px]">2020 ~ 2025</div>
-                  <div className="font-bold">성결대학교 컴퓨터공학과</div>
-                </section>
-
-                <section>
-                  <div className="text-[15px]">2015 ~ 2018</div>
-                  <div className="font-bold">광명북고등학교</div>
-                </section>
-              </div>
-            </div>
+          <section className="info-block" aria-labelledby="education-title">
+            <h2 id="education-title" className="info-heading">EDUCATION</h2>
+            <ol className="education-list">
+              <li><span>2020 ~ 2025</span><strong>성결대학교 컴퓨터공학과</strong></li>
+              <li><span>2015 ~ 2018</span><strong>광명북고등학교</strong></li>
+            </ol>
           </section>
         </div>
 
-        <section className="Skills flex flex-col gap-5">
-          <div className="info-txt-bold">SKILLS</div>
-
-          <section className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:px-[70px]">
-            <div>
-              <div className="font-bold">Front-End</div>
-              <div>Kotlin</div>
-              <div>Python</div>
-              <div>Java</div>
-              <div>HTML</div>
-              <div>CSS</div>
-              <div>JavaScript</div>
-              <div>React</div>
-              <div>React Native</div>
-              <div>TypeScript</div>
-              <div>Next.js</div>
-              <div>Vue</div>
-              <div>Tailwind CSS</div>
-            </div>
-
-            <div>
-              <div className="font-bold">Tools / Deployment</div>
-              <div>Photoshop</div>
-              <div>Figma</div>
-              <div>GitHub</div>
-              <div>Notion</div>
-              <div>Jira</div>
-              <div>Firebase Hosting</div>
-            </div>
-
-            <div>
-              <div className="font-bold">Back-End / BaaS</div>
-
-              <div>Firebase Authentication</div>
-              <div>Cloud Firestore</div>
-            </div>
-          </section>
+        <section className="info-block info-skills" aria-labelledby="skills-title">
+          <h2 id="skills-title" className="info-heading">SKILLS</h2>
+          <div className="skills-grid">
+            <SkillGroup title="Front-End" skills={frontEndSkills} />
+            <SkillGroup title="Tools / Deployment" skills={toolSkills} />
+            <SkillGroup title="Back-End / BaaS" skills={backendSkills} />
+          </div>
         </section>
       </div>
     </section>

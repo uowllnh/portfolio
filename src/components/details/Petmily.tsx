@@ -9,10 +9,10 @@ import type { ProjectProps } from "../ProjectDetail";
 
 export const petMilyData: ProjectProps = {
   title: "펫밀리",
-  description: "반려동물의 산책과 건강기록 및 관리 앱",
+  description: "개발 중인 반려동물 산책·건강 기록 관리 앱",
   member: "팀 프로젝트",
   detail:
-    "반려동물의 건강과 일상을 한곳에서 관리할 수 있는 반려동물 라이프케어 앱입니다. 반려동물 정보를 기반으로 산책 기록, 예방접종 일정, 건강 관리 등 필요한 정보를 편리하게 기록하고 확인할 수 있도록 설계했습니다.",
+    "현재 개발 중인 반려동물 라이프케어 앱입니다. 반려동물 정보를 기반으로 산책 기록, 예방접종 일정, 건강 관리 등 필요한 정보를 한곳에서 편리하게 기록하고 확인할 수 있도록 설계하고 있습니다. 프로젝트 저장소는 팀 협업을 위해 비공개로 운영하고 있어 GitHub 링크는 제공하지 않습니다.",
   period: "2026.07 ~",
   stack: ["Kotlin", "Dart", "FireBase", "Figma", "GitHub"],
   myRoles: [

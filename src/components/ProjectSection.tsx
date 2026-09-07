@@ -33,7 +33,7 @@ export default function ProjectSection({ selected }: { selected: Tab }) {
   };
 
   return (
-    <section className="flex relative ml-[300px]">
+    <section className="project-section" aria-live="polite">
       <section className="section-scroll">
         <div className="scroll-container">
           {filteredProjects.map((project) => (
